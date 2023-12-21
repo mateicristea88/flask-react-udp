@@ -11,6 +11,7 @@
 # production
 /build
 venv/
+api/__pycache__/
 
 # misc
 .DS_Store
