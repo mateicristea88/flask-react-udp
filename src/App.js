@@ -40,13 +40,13 @@ function handleSubmit(e) {
 
 function App() {
 
-  const [currentTime, setCurrentTime] = useState(0);
+  // const [currentTime, setCurrentTime] = useState(0);
 
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/time').then(res => res.json()).then(data => {
+  //     setCurrentTime(data.time);
+  //   });
+  // }, []);
 
   return (
     <div className="App">
@@ -91,7 +91,7 @@ function App() {
         </div>
 
         <div className="example-text-box">
-          latest number is {currentTime}.
+          latest number is .
         </div>
 
         <a
