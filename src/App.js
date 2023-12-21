@@ -1,24 +1,25 @@
 import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function TextBoxContent() {
-  // JSON obj from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON#arrays_as_json
-  const exampleJSON = [
-    {
-      name: "Molecule Man",
-      age: 29,
-      secretIdentity: "Dan Jukes",
-      powers: ["Radiation resistance", "Turning tiny", "Radiation blast"]
-    }]
-    const parseJsonIntoConsoleStr = (item, index) => {
-      return (
-        <p key={index}>
-          {item.name}'s true identity is {item.secretIdentity}
-        </p>
-      );
-    };
-    return exampleJSON.map(parseJsonIntoConsoleStr);
-  }
+// function TextBoxContent() {
+//   // JSON obj from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON#arrays_as_json
+//   const exampleJSON = [
+//     {
+//       name: "Molecule Man",
+//       age: 29,
+//       secretIdentity: "Dan Jukes",
+//       powers: ["Radiation resistance", "Turning tiny", "Radiation blast"]
+//     }]
+//     const parseJsonIntoConsoleStr = (item, index) => {
+//       return (
+//         <p key={index}>
+//           {item.name}'s true identity is {item.secretIdentity}
+//         </p>
+//       );
+//     };
+//     return exampleJSON.map(parseJsonIntoConsoleStr);
+//   }
 
 
 function handleSubmit(e) {
@@ -38,6 +39,15 @@ function handleSubmit(e) {
 }
 
 function App() {
+
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    fetch('/time').then(res => res.json()).then(data => {
+      setCurrentTime(data.time);
+    });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -81,7 +91,7 @@ function App() {
         </div>
 
         <div className="example-text-box">
-          <TextBoxContent />
+          latest number is {currentTime}.
         </div>
 
         <a
